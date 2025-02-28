@@ -41,6 +41,12 @@
       Alternately, you can put it in the <code>_x-api-key</code> search parameter. Note the underscore.
     </p>
 
+    <h3>Specifying the sheet</h3>
+    <p>By default, the API will use the first sheet in the spreadsheet.
+      You can specify a different sheet by adding the <code>_sheet</code> parameter to the URL. Note the underscore.
+      For example, <code>https://sheetapi.dev/api/sheet/1234567890?_sheet=Sheet111</code>.
+    </p>
+
     <h3 id="search">Search</h3>
     <p><code>GET /api/sheet/{sheetuid}/search?search1=param1&searchN=paramN</code></p>
     <h4>Examples</h4>

@@ -4,6 +4,7 @@ WORKDIR /app/frontend
 COPY sheet-api-fe/package.json sheet-api-fe/package-lock.json ./
 RUN npm install
 COPY sheet-api-fe/ . 
+ARG SERVICE_ACCOUNT_EMAIL
 RUN npm run generate
 
 # Stage 2: Build the backend

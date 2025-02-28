@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  app:
+    env_file:
+      - .env
+    build: 
+      context: .
+      args:
+        SERVICE_ACCOUNT_EMAIL: ${SERVICE_ACCOUNT_EMAIL}
+    depends_on:
+      - db
+      - redis
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./service_account.json:/app/src/config/service_account.json
+
+  db:
+    image: mysql:8.0-oracle
+    restart: always
+    volumes:
+      - db_data:/var/lib/mysql
+    env_file:
+      - .env
+
+  redis:
+    image: redis:alpine
+    restart: always
+    command: redis-server --appendonly yes
+    volumes:
+      - redis_data:/data
+
+volumes:
+  db_data:
+  redis_data:
